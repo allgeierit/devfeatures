@@ -1,6 +1,6 @@
 {
     "name": "buf Bufbuild",
-    "id": "buildbuf",
+    "id": "buf",
     "version": "1.0.0",
     "description": "Buf for protocol buffers",
     "options": {
