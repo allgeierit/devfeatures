@@ -27,7 +27,7 @@ fi
 
 archTxt="arm64"
 arch=$(uname -i)
-if [ "${arch}" = "amd64" ] || [ "${arch}" = "x86_64" ] ; then
+if [ "${arch}" = "amd64" ] || [ "${arch}" = "x86_64" ] || [ ${arch} = "unknown" ] ; then
     archTxt="amd64"
 fi
 
