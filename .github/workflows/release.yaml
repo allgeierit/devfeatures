@@ -2,11 +2,8 @@ name: "Release dev container features & Generate Documentation"
 on:
   # Use on pushing a semver release.
   push:
-    branches: [ master ]
-    tags:
-      - 'v*'
-  #pull_request:
-  #  branches: [ master ]
+    branches:
+      - master
 
   workflow_dispatch:
 
