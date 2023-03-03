@@ -14,6 +14,7 @@ check_packages() {
 
 echo "(*) Installing BUF..."
 
+export DEBIAN_FRONTEND=noninteractive
 check_packages curl ca-certificates jq
 
 VERSION=${VERSION:-"latest"}
