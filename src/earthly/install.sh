@@ -34,6 +34,7 @@ fi
 DOWNLOAD_URL=https://github.com/earthly/earthly/releases/download/${versionStr}/earthly-$(uname -s | tr '[:upper:]' '[:lower:]')-${archTxt}
 echo "Installing version: ${versionStr}"
 echo "Download URL: ${DOWNLOAD_URL}"
+echo "Uname: ${arch}"
 
 BIN="/usr/local/bin"
 curl -sSL ${DOWNLOAD_URL} -o "${BIN}/earthly" || exit 1
