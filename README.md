@@ -10,9 +10,8 @@ Installs buf
 
 ```jsonc
 {
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "https://github.com/allgeierit/devfeatures:1": {
+        "ghcr.io/allgeierit/devfeatures/buf:1": {
             "version": "latest"
         }
     }

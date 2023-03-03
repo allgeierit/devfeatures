@@ -1,17 +1,17 @@
 {
-    "name": "buf Bufbuild",
+    "name": "Bufbuild buf",
     "id": "buf",
     "version": "1.0.0",
-    "description": "Buf for protocol buffers",
+    "description": "Buf for protocol buffers, https://github.com/bufbuild/buf",
     "options": {
         "version": {
             "type": "string",
             "proposals": [
                 "latest",
-                "1.15.0"
+                "v1.15.0"
             ],
             "default": "latest",
-            "description": "BUF version to install"
+            "description": "BUF version to install. Format semver like v1.1.1"
         }
     },
     "installsAfter": [

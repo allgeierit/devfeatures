@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-# Checks if packages are installed and installs them if not
+# Checks if packages are installed and installs them if not.
 check_packages() {
     if ! dpkg -s "$@" > /dev/null 2>&1; then
         if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
@@ -14,21 +14,25 @@ check_packages() {
 
 echo "(*) Installing BUF..."
 
-VERSION=${VERSION:-"latest"}
-echo "The provided version is: $VERSION"
+check_packages curl ca-certificates jq
 
-versionStr="1.15.0"
+VERSION=${VERSION:-"latest"}
+echo "Requested version: $VERSION"
+
 if [ "${VERSION}" != "latest" ]; then
     versionStr=-${VERSION}
+else
+    versionStr=$(curl https://api.github.com/repos/bufbuild/buf/releases/latest | jq -r '.tag_name')
 fi
 
-check_packages curl ca-certificates
 
-echo "https://github.com/bufbuild/buf/releases/download/v${versionStr}/buf-$(uname -s)-$(uname -m)" > /usr/local/bin/version
+echo "Installing version: $versionStr"
 
 BIN="/usr/local/bin" 
 curl -sSL \
-"https://github.com/bufbuild/buf/releases/download/v${versionStr}/buf-$(uname -s)-$(uname -m)" \
+"https://github.com/bufbuild/buf/releases/download/${versionStr}/buf-$(uname -s)-$(uname -m)" \
 -o "${BIN}/buf" || exit 1
 
 chmod +x "${BIN}/buf"
+
+echo "Done"
