@@ -31,12 +31,12 @@ if [ "${arch}" = "amd64" ] || [ "${arch}" = "x86_64" ] ; then
     archTxt="amd64"
 fi
 
-echo "Installing version: $versionStr"
+DOWNLOAD_URL=https://github.com/earthly/earthly/releases/download/${versionStr}/earthly-$(uname -s | tr '[:upper:]' '[:lower:]')-${archTxt}
+echo "Installing version: ${versionStr}"
+echo "Download URL: ${DOWNLOAD_URL}"
 
 BIN="/usr/local/bin"
-curl -sSL \
-"https://github.com/earthly/earthly/releases/download/${versionStr}/earthly-$(uname -s | tr '[:upper:]' '[:lower:]')-${archTxt}" \
--o "${BIN}/earthly" || exit 1
+curl -sSL ${DOWNLOAD_URL} -o "${BIN}/earthly" || exit 1
 
 chmod +x "${BIN}/earthly"
 
