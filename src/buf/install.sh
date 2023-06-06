@@ -21,7 +21,7 @@ VERSION=${VERSION:-"latest"}
 echo "Requested version: $VERSION"
 
 if [ "${VERSION}" != "latest" ]; then
-    versionStr=-${VERSION}
+    versionStr=${VERSION}
 else
     versionStr=$(curl https://api.github.com/repos/bufbuild/buf/releases/latest | jq -r '.tag_name')
 fi
